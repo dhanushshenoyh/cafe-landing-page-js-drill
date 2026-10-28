@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Brew &amp; Byte - A neighbourhood café serving specialty coffee and fresh artisan pastries for developers and coffee enthusiasts.">
+  <title>Brew &amp; Byte | Neighbourhood Café &amp; Code Lounge</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Sticky Header with Flexbox Navigation -->
+  <header class="site-header">
+    <nav class="navbar" aria-label="Primary Navigation">
+      <a href="#home" class="brand-logo" aria-label="Brew and Byte Homepage">Brew &amp; Byte</a>
+
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <p class="order-tracker" aria-live="polite">Items in order: <span id="order-count">0</span></p>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+      <h1>Brew &amp; Byte Café</h1>
+      <p class="hero-tagline">Specialty coffee, fresh bakes, and gigabit WiFi crafted for coders, thinkers, and early risers.</p>
+      <a href="#menu" class="cta-button">Browse Today's Menu</a>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+      <h2>About Our Café</h2>
+      <p>
+        Founded in 2024, Brew &amp; Byte is your local neighbourhood sanctuary where single-origin roasts meet quiet focus.
+        Whether you are debugging complex code, reading a good book, or catching up with a friend over pour-over coffee,
+        our doors and power outlets are always open.
+      </p>
+    </section>
+
+    <!-- Menu Section (Contains the Grid and Delegation Target) -->
+    <section id="menu" class="menu-section menu">
+      <h2>Our Handcrafted Menu</h2>
+      <p class="section-lead">Made to order with responsibly sourced beans and local organic dairy.</p>
+
+      <!-- CSS Grid Container for Menu Cards -->
+      <section class="menu-grid" aria-label="Café Menu">
+
+        <!-- Card 1 (Bestseller with Specificity Drill Target) -->
+        <article class="menu-card card-bestseller">
+          <span class="badge-bestseller">Bestseller</span>
+          <figure class="card-media">
+            <img 
+              src="images/espresso.svg" 
+              alt="Freshly pulled double espresso topped with rich hazelnut crema in a dark ceramic cup" 
+              width="400" 
+              height="280"
+              loading="lazy"
+            >
+          </figure>
+          <h3>Espresso Con Panna</h3>
+          <p class="card-desc">Bold double espresso shot topped with a generous dollop of chilled, hand-whipped vanilla cream.</p>
+          <!-- ID and class selector target for specificity exercise -->
+          <p id="price" class="amount">$3.50</p>
+          <button type="button" class="btn-order" data-item="Espresso Con Panna">Add to order</button>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="menu-card">
+          <figure class="card-media">
+            <img 
+              src="images/coldbrew.svg" 
+              alt="Tall glass of smooth nitro cold brew coffee poured over clear artisan ice cubes" 
+              width="400" 
+              height="280"
+              loading="lazy"
+            >
+          </figure>
+          <h3>Nitro Cold Brew</h3>
+          <p class="card-desc">Slow-steeped for 18 hours in cold filtered water and nitrogen-infused for a silky cascade finish.</p>
+          <p class="amount">$4.75</p>
+          <button type="button" class="btn-order" data-item="Nitro Cold Brew">Add to order</button>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="menu-card">
+          <figure class="card-media">
+            <img 
+              src="images/latte.svg" 
+              alt="Steaming hot cardamom oat milk latte in a ceramic mug with delicate leaf latte art" 
+              width="400" 
+              height="280"
+              loading="lazy"
+            >
+          </figure>
+          <h3>Cardamom Oat Latte</h3>
+          <p class="card-desc">House espresso paired with steamed barista oat milk and aromatic crushed green cardamom pods.</p>
+          <p class="amount">$5.25</p>
+          <button type="button" class="btn-order" data-item="Cardamom Oat Latte">Add to order</button>
+        </article>
+
+        <!-- Card 4 -->
+        <article class="menu-card">
+          <figure class="card-media">
+            <img 
+              src="images/croissant.svg" 
+              alt="Golden flaky artisan croissant freshly baked and dusted on a wooden serving board" 
+              width="400" 
+              height="280"
+              loading="lazy"
+            >
+          </figure>
+          <h3>Artisan Croissant</h3>
+          <p class="card-desc">Laminated pastry dough baked fresh each morning using cultured butter from local French bakeries.</p>
+          <p class="amount">$4.25</p>
+          <button type="button" class="btn-order" data-item="Artisan Croissant">Add to order</button>
+        </article>
+
+        <!-- Card 5 -->
+        <article class="menu-card">
+          <figure class="card-media">
+            <img 
+              src="images/avocado.svg" 
+              alt="Crisp toasted sourdough bread topped with smashed avocado, sliced radish, and black sesame seeds" 
+              width="400" 
+              height="280"
+              loading="lazy"
+            >
+          </figure>
+          <h3>Avocado Sourdough Tartine</h3>
+          <p class="card-desc">Country sourdough toast layered with seasoned Hass avocado, watermelon radish, and toasted sesame.</p>
+          <p class="amount">$7.50</p>
+          <button type="button" class="btn-order" data-item="Avocado Sourdough Tartine">Add to order</button>
+        </article>
+
+        <!-- Card 6 -->
+        <article class="menu-card">
+          <figure class="card-media">
+            <img 
+              src="images/brownie.svg" 
+              alt="Fudgy dark chocolate hazelnut brownie square sprinkled with sea salt flakes" 
+              width="400" 
+              height="280"
+              loading="lazy"
+            >
+          </figure>
+          <h3>Dark Hazelnut Brownie</h3>
+          <p class="card-desc">70% single-origin Belgian dark chocolate, roasted hazelnuts, and a dusting of Maldon sea salt flakes.</p>
+          <p class="amount">$4.50</p>
+          <button type="button" class="btn-order" data-item="Dark Hazelnut Brownie">Add to order</button>
+        </article>
+
+      </section>
+    </section>
+
+    <!-- Accessible Contact Form Section -->
+    <section id="contact" class="contact-section">
+      <h2>Get in Touch</h2>
+      <p class="section-lead">Have a question or looking to reserve seating for a study group? Drop us a line.</p>
+
+      <form id="contact-form" class="contact-form" novalidate>
+        <label for="contact-name">
+          Your Name <span class="required-indicator" aria-hidden="true">*</span>
+        </label>
+        <input 
+          type="text" 
+          id="contact-name" 
+          name="name" 
+          placeholder="e.g. Alex Morgan" 
+          autocomplete="name"
+          required
+        >
+
+        <label for="contact-email">
+          Email Address <span class="required-indicator" aria-hidden="true">*</span>
+        </label>
+        <input 
+          type="email" 
+          id="contact-email" 
+          name="email" 
+          placeholder="e.g. alex@example.com" 
+          autocomplete="email"
+          required
+        >
+
+        <label for="contact-message">
+          Message <span class="required-indicator" aria-hidden="true">*</span>
+        </label>
+        <textarea 
+          id="contact-message" 
+          name="message" 
+          rows="5" 
+          placeholder="Write your note, feedback, or inquiry here..." 
+          required
+        ></textarea>
+
+        <button type="submit" class="btn-submit">Send Message</button>
+        <p id="form-feedback" class="form-feedback" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+
+  <!-- Semantic Footer with Address and Timings -->
+  <footer class="site-footer">
+    <section class="footer-content">
+      <address class="cafe-address">
+        <strong>Brew &amp; Byte Café</strong><br>
+        404 Syntax Way, Tech Quarter<br>
+        Hours: Monday – Sunday, 7:00 AM – 9:00 PM<br>
+        Email: <a href="mailto:hello@brewandbyte.cafe">hello@brewandbyte.cafe</a>
+      </address>
+      <p class="footer-copy">&copy; 2026 Brew &amp; Byte. Built with clean, accessible semantic HTML, CSS &amp; JavaScript.</p>
+    </section>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

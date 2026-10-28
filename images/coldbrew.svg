@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 280" width="100%" height="100%">
+  <defs>
+    <linearGradient id="cb-bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f5ede6"/>
+      <stop offset="100%" stop-color="#e8dacf"/>
+    </linearGradient>
+    <linearGradient id="cold-brew-grad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#6d4c41"/>
+      <stop offset="25%" stop-color="#3e2723"/>
+      <stop offset="100%" stop-color="#1b0000"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="280" rx="12" fill="url(#cb-bg)"/>
+
+  <!-- Shadow -->
+  <ellipse cx="200" cy="245" rx="55" ry="12" fill="#d7ccc8" opacity="0.6"/>
+
+  <!-- Glass Container -->
+  <path d="M160 50 L168 230 Q200 240 232 230 L240 50 Z" fill="#ffffff" opacity="0.25" stroke="#cfd8dc" stroke-width="3"/>
+
+  <!-- Cold Brew Liquid -->
+  <path d="M162 90 L169 228 Q200 238 231 228 L238 90 Z" fill="url(#cold-brew-grad)"/>
+
+  <!-- Ice Cubes floating -->
+  <rect x="175" y="110" width="22" height="22" rx="4" transform="rotate(15 186 121)" fill="#ffffff" opacity="0.45" stroke="#b0bec5" stroke-width="1.5"/>
+  <rect x="200" y="130" width="24" height="24" rx="4" transform="rotate(-20 212 142)" fill="#ffffff" opacity="0.4" stroke="#b0bec5" stroke-width="1.5"/>
+  <rect x="180" y="165" width="20" height="20" rx="3" transform="rotate(8 190 175)" fill="#ffffff" opacity="0.35" stroke="#b0bec5" stroke-width="1.5"/>
+
+  <!-- Nitro Cascading Head Foam -->
+  <path d="M161 75 Q200 85 239 75 L238 95 Q200 102 162 95 Z" fill="#fff8e1" opacity="0.95"/>
+  <ellipse cx="200" cy="74" rx="39" ry="8" fill="#ffecb3"/>
+
+  <!-- Glass Highlight -->
+  <path d="M166 60 L172 220" stroke="#ffffff" stroke-width="3" stroke-linecap="round" opacity="0.6"/>
+</svg>

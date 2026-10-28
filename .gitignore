@@ -1,0 +1,14 @@
+# Environment & Secrets
+.env
+.env.*
+*.env
+
+# Operating System & IDEs
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Node
+node_modules/
+npm-debug.log*
