@@ -1,0 +1,517 @@
+/* ==========================================================================
+   CSS Reset & Global Box Model Setup
+   ========================================================================== */
+
+/*
+ * Setting box-sizing: border-box globally ensures padding and borders are
+ * included in the element's total width and height, preventing layout breakage.
+ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --color-bg-base: #faf7f2;
+  --color-bg-surface: #ffffff;
+  --color-text-main: #231f1e;
+  --color-text-muted: #5c5552;
+  --color-brand-primary: #78350f;
+  --color-brand-accent: #b45309;
+  --color-brand-hover: #92400e;
+  --color-border: #e6ded6;
+  --color-badge: #d97706;
+  --font-family-base: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+html {
+  font-size: 100%; /* 16px root */
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-family-base);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-text-main);
+  background-color: var(--color-bg-base);
+}
+
+/* ==========================================================================
+   Accessible Keyboard Focus States
+   ========================================================================== */
+
+/* Every interactive element is reachable with Tab and shows a visible focus style */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 0.1875rem solid var(--color-brand-accent);
+  outline-offset: 0.1875rem;
+}
+
+/* ==========================================================================
+   Header & Navigation
+   ========================================================================== */
+
+/* Sticky header implementation */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: rgba(250, 247, 242, 0.96);
+  backdrop-filter: blur(0.5rem);
+  border-bottom: 0.0625rem solid var(--color-border);
+  box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.04);
+}
+
+/*
+ * Layout Choice Explanation (Flexbox for Navigation):
+ * Flexbox was chosen for the navigation bar because it represents a 1-dimensional
+ * layout. It naturally distributes items along a single horizontal axis, simplifies
+ * alignment between the brand title, nav links, and order counter with space-between,
+ * and allows clean re-wrapping or stacking when switching orientations.
+ */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 92%;
+  max-width: 75rem;
+  margin: 0 auto;
+  padding: 1rem 0;
+  gap: 1.5rem;
+}
+
+.brand-logo {
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.02rem;
+  color: var(--color-brand-primary);
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  gap: 1.75rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--color-text-main);
+  font-weight: 500;
+  font-size: 1rem;
+  transition: color 0.15s ease-in-out;
+}
+
+.nav-links a:hover {
+  color: var(--color-brand-accent);
+}
+
+.order-tracker {
+  font-size: 0.95rem;
+  font-weight: 600;
+  background-color: #f5ede4;
+  color: var(--color-brand-primary);
+  padding: 0.4rem 0.85rem;
+  border-radius: 9999px;
+  border: 0.0625rem solid #e2d2c1;
+}
+
+#order-count {
+  font-weight: 700;
+  color: var(--color-brand-hover);
+}
+
+/* ==========================================================================
+   Main Content Layout & Typography
+   ========================================================================== */
+
+main {
+  width: 92%;
+  max-width: 75rem;
+  margin: 0 auto;
+  padding: 2.5rem 0;
+}
+
+/* Hero Section */
+.hero-section {
+  text-align: center;
+  padding: 4rem 1.5rem 3.5rem;
+  background: linear-gradient(180deg, #f4ebe1 0%, var(--color-bg-base) 100%);
+  border-radius: 1rem;
+  border: 0.0625rem solid var(--color-border);
+  margin-bottom: 3.5rem;
+}
+
+.hero-section h1 {
+  font-size: 2.5rem;
+  line-height: 1.2;
+  color: var(--color-brand-primary);
+  margin-bottom: 1rem;
+}
+
+.hero-tagline {
+  font-size: 1.2rem;
+  color: var(--color-text-muted);
+  max-width: 38rem;
+  margin: 0 auto 1.75rem;
+}
+
+.cta-button {
+  display: inline-block;
+  background-color: var(--color-brand-primary);
+  color: #ffffff;
+  padding: 0.75rem 1.75rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: background-color 0.15s ease-in-out;
+}
+
+.cta-button:hover {
+  background-color: var(--color-brand-hover);
+}
+
+/* About Section */
+.about-section {
+  background-color: var(--color-bg-surface);
+  border: 0.0625rem solid var(--color-border);
+  border-radius: 0.75rem;
+  padding: 2.25rem 2rem;
+  margin-bottom: 3.5rem;
+}
+
+.about-section h2,
+.menu-section h2,
+.contact-section h2 {
+  font-size: 1.85rem;
+  color: var(--color-brand-primary);
+  margin-bottom: 0.75rem;
+}
+
+.section-lead {
+  font-size: 1.05rem;
+  color: var(--color-text-muted);
+  margin-bottom: 2rem;
+}
+
+/* ==========================================================================
+   Menu Section & CSS Grid Layout
+   ========================================================================== */
+
+/*
+ * Layout Choice Explanation (CSS Grid for Menu):
+ * CSS Grid was chosen for the menu cards because it is a true 2-dimensional
+ * layout system. The `repeat(auto-fit, minmax(220px, 1fr))` definition allows
+ * the cards to fluidly calculate column widths and wrap to new rows cleanly
+ * as the viewport expands or shrinks, giving equal card dimensions without
+ * requiring extra wrapper divs or manual breakpoint rules.
+ */
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.75rem;
+  margin-bottom: 4rem;
+}
+
+/* Menu Item Article Cards */
+.menu-card {
+  position: relative; /* Position relative container for absolute badge */
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-bg-surface);
+  border: 0.0625rem solid var(--color-border);
+  border-radius: 0.75rem;
+  overflow: hidden;
+  padding: 1.25rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.menu-card:hover {
+  transform: translateY(-0.25rem);
+  box-shadow: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.08);
+}
+
+/* Bestseller Badge with position: absolute inside position: relative */
+.badge-bestseller {
+  position: absolute;
+  top: 1.75rem;
+  right: 1.75rem;
+  z-index: 2;
+  background-color: var(--color-badge);
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.03rem;
+  text-transform: uppercase;
+  padding: 0.25rem 0.65rem;
+  border-radius: 0.25rem;
+  box-shadow: 0 0.125rem 0.35rem rgba(0, 0, 0, 0.2);
+}
+
+.card-media {
+  width: 100%;
+  height: 12rem;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  background-color: #ede5dc;
+}
+
+.card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.menu-card h3 {
+  font-size: 1.25rem;
+  color: var(--color-brand-primary);
+  margin-bottom: 0.5rem;
+}
+
+.card-desc {
+  font-size: 0.925rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  flex-grow: 1; /* Pushes price and order button to bottom */
+}
+
+/* ==========================================================================
+   Specificity Exercise Rules (from Assignment Spec)
+   ========================================================================== */
+
+/*
+ * Specificity Hierarchy:
+ * #price           -> (1, 0, 0) : 1 ID selector
+ * .menu .amount    -> (0, 2, 0) : 2 Class selectors
+ * p.amount         -> (0, 1, 1) : 1 Element, 1 Class selector
+ *
+ * Prediction & Verification:
+ * For element <p id="price" class="amount">:
+ * #price has the highest specificity (1, 0, 0), so its color GREEN takes precedence.
+ */
+#price {
+  color: green;
+}
+
+.menu .amount {
+  color: red;
+}
+
+p.amount {
+  color: blue;
+}
+
+/* General styling for amount */
+.amount {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+/* Add to Order Button */
+.btn-order {
+  display: inline-block;
+  width: 100%;
+  padding: 0.7rem 1rem;
+  background-color: var(--color-brand-primary);
+  color: #ffffff;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s ease-in-out, transform 0.05s ease;
+}
+
+.btn-order:hover {
+  background-color: var(--color-brand-hover);
+}
+
+.btn-order:active {
+  transform: scale(0.98);
+}
+
+/* ==========================================================================
+   Contact Form Section
+   ========================================================================== */
+
+.contact-section {
+  background-color: var(--color-bg-surface);
+  border: 0.0625rem solid var(--color-border);
+  border-radius: 0.75rem;
+  padding: 2.5rem 2rem;
+  margin-bottom: 3.5rem;
+}
+
+.contact-form {
+  max-width: 36rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-form label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-text-main);
+  margin-top: 1.25rem;
+  margin-bottom: 0.35rem;
+}
+
+.required-indicator {
+  color: #b91c1c;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 0.75rem 0.9rem;
+  font-family: inherit;
+  font-size: 1rem;
+  color: var(--color-text-main);
+  background-color: var(--color-bg-base);
+  border: 0.0625rem solid var(--color-border);
+  border-radius: 0.5rem;
+  transition: border-color 0.15s ease-in-out;
+}
+
+.contact-form input:hover,
+.contact-form textarea:hover {
+  border-color: #c4b5a5;
+}
+
+.contact-form textarea {
+  resize: vertical;
+  min-height: 8rem;
+}
+
+.btn-submit {
+  align-self: flex-start;
+  margin-top: 1.5rem;
+  padding: 0.8rem 2rem;
+  background-color: var(--color-brand-primary);
+  color: #ffffff;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s ease-in-out;
+}
+
+.btn-submit:hover {
+  background-color: var(--color-brand-hover);
+}
+
+.form-feedback {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.form-feedback.success {
+  color: #15803d;
+}
+
+.form-feedback.error {
+  color: #b91c1c;
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+.site-footer {
+  border-top: 0.0625rem solid var(--color-border);
+  background-color: #f2eae0;
+  padding: 3rem 0;
+  margin-top: 2rem;
+}
+
+.footer-content {
+  width: 92%;
+  max-width: 75rem;
+  margin: 0 auto;
+}
+
+.cafe-address {
+  font-style: normal;
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: var(--color-text-muted);
+  margin-bottom: 1.25rem;
+}
+
+.cafe-address a {
+  color: var(--color-brand-primary);
+  text-decoration: underline;
+}
+
+.footer-copy {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+
+/* ==========================================================================
+   Responsive Media Query (768px Breakpoint)
+   ========================================================================== */
+
+/* Turn navigation into a stacked menu below 768px */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+    padding: 1rem 0;
+  }
+
+  .brand-logo {
+    text-align: center;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    gap: 0.85rem;
+    padding: 0.5rem 0;
+    border-top: 0.0625rem solid var(--color-border);
+    border-bottom: 0.0625rem solid var(--color-border);
+  }
+
+  .order-tracker {
+    text-align: center;
+    align-self: center;
+  }
+
+  .hero-section {
+    padding: 2.5rem 1rem;
+  }
+
+  .hero-section h1 {
+    font-size: 2rem;
+  }
+
+  .hero-tagline {
+    font-size: 1.05rem;
+  }
+
+  .contact-section,
+  .about-section {
+    padding: 1.75rem 1.25rem;
+  }
+
+  .btn-submit {
+    width: 100%;
+  }
+}
